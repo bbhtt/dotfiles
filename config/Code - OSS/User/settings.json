@@ -1,0 +1,11 @@
+{
+    "telemetry.telemetryLevel": "off",
+    "window.autoDetectColorScheme": true,
+    "window.dialogStyle": "custom",
+    "window.titleBarStyle": "custom",
+    "terminal.external.linuxExec": "kgx",
+    "workbench.enableExperiments": false,
+    "workbench.experimental.cloudChanges.partialMatches.enabled": true,
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.fontFamily": "'Delugia Mono', 'monospace', monospace"
+}
