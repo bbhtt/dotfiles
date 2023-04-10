@@ -1,15 +1,15 @@
-# .zshrc
+### .zshrc
 
-# Display last login and uptime
+## Display last login and uptime
 echo "Last Login:$(last -2 -R "$(whoami)"|head -2|cut -c 20-|grep -v 'logged in')"
 echo "Uptime:       $(uptime -p)"
 
-[[ "$(whoami)" = "root" ]] && return
+[[ "$(whoami)" == "root" ]] && return
 
 # antigen plugin manager
 source /usr/share/zsh/share/antigen.zsh
 
-# zsh options
+## zsh options
 # Turns on spelling correction for commands
 setopt correct
 # Turns on spelling correction for all arguments
@@ -66,6 +66,7 @@ setopt prompt_subst
 autoload -U compinit compdef
 
 # Check cache once every day - speeds up startup
+# https://gist.github.com/ctechols/ca1035271ad134841284
 for dump in $HOME/.cache/zsh/zcompdump(N.mh+24); do
   compinit -d $HOME/.cache/zsh/zcompdump
 done
@@ -119,12 +120,12 @@ zstyle ':fzf-tab:*' switch-group ',' '.'
 
 # Don't consider certain characters part of the word
 WORDCHARS=${WORDCHARS//\/[&.;]}
-# History
+## History
 HISTFILE=$HOME/.cache/zsh/zshistory
 HISTSIZE=10000
 SAVEHIST=10000
 
-# Colored man pages
+## Colored man pages
 export LESS_TERMCAP_mb=$'\E[01;32m'
 export LESS_TERMCAP_md=$'\E[01;32m'
 export LESS_TERMCAP_me=$'\E[0m'
@@ -134,7 +135,7 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;36m'
 export LESS=-R
 
-# Aliases
+## Aliases
 alias ls="ls -lA --color=auto"
 alias grep="grep -i --color=auto"
 alias ip="ip -color=auto"
@@ -149,12 +150,12 @@ alias diff="delta"
 alias nano="micro"
 alias shredf="shred -uvz"
 alias top="top -e m -E m -u $(whoami)"
-alias 'cd..'="cd_dir"
 alias pf="printf '%s\n' *"
 alias rgtagmp3="mp3gain -s i -r -e *.mp3"
 alias cat="bat --style=plain"
+alias rename="rn"
 
-# Environment variables
+## Environment variables
 export MICRO_CONFIG_HOME="/home/wirt/.config/micro"
 export MICRO_TRUECOLOR="1"
 export EDITOR="micro"
@@ -163,14 +164,14 @@ export PAGER="less -r"
 export BAT_THEME="Dracula"
 export PATH="$PATH:$HOME/.local/bin"
 
-# Prompt
+## Prompt
 if [[ "$(whoami)" == "wirt" ]] ; then
 	PROMPT='[%F{green}%n%f %F{yellow}%~%f %F{blue}${vcs_info_msg_0_}%f]:$ '
 elif [[ "$(whoami)" == "root" ]]; then
 	PROMPT='[%F{red}%n%f %F{yellow}%~%f]:# '
 fi
 
-# Plugins
+## Plugins
 antigen use oh-my-zsh
 # Suggest package if command not found
 antigen bundle command-not-found
@@ -184,6 +185,8 @@ antigen bundle dirhistory
 antigen bundle copybuffer
 # Copy file to clipboard
 antigen bundle copyfile
+# Extract supported files, syntax is `extract <filename>`
+antigen bundle extract
 # Press escape twice to run as sudo
 antigen bundle sudo
 # systemd aliases
@@ -217,6 +220,6 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Ctrl+ Space
 bindkey '^ ' autosuggest-accept
 
-# Terminal title
+## Terminal title
 DISABLE_AUTO_TITLE="true"
 echo -e "\033];[$(hostname)@$(whoami)]:$\007"
