@@ -1,0 +1,25 @@
+# Quality and Format <=720p, ue h264 codec for hw acceleration, disable as it cannot download from other sources when specified quality not available
+
+#--format "bestvideo[height<=720][vcodec=h264]+bestaudio/best[height<=720]"
+
+# Bypass geographic restrictions
+
+--geo-bypass
+
+# Subtitles
+
+--write-subs
+--write-automatic-subs
+--sub-langs en
+--compat-options no-live-chat
+
+# Directory
+
+#--output "~/Videos/YouTube/%(title)s.%(ext)s"
+
+# Metadata
+
+--embed-subs
+--embed-thumbnail
+--embed-metadata
+--embed-chapters
