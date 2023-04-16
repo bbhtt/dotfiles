@@ -162,19 +162,19 @@ export EDITOR="micro"
 export VISUAL="micro"
 export PAGER="less -r"
 export BAT_THEME="Dracula"
+#export PATH="/usr/lib/ccache/bin/:$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.local/bin"
+export npm_config_prefix="$HOME/.local"
 
 ## Prompt
-if [[ "$(whoami)" == "wirt" ]] ; then
-	PROMPT='[%F{green}%n%f %F{yellow}%~%f %F{blue}${vcs_info_msg_0_}%f]:$ '
-elif [[ "$(whoami)" == "root" ]]; then
-	PROMPT='[%F{red}%n%f %F{yellow}%~%f]:# '
-fi
+#if [[ "$(whoami)" == "wirt" ]] ; then
+#	PROMPT='[%F{green}%n%f %F{yellow}%~%f %F{blue}${vcs_info_msg_0_}%f]:$ '
+#elif [[ "$(whoami)" == "root" ]]; then
+#	PROMPT='[%F{red}%n%f %F{yellow}%~%f]:# '
+#fi
 
 ## Plugins
 antigen use oh-my-zsh
-# Suggest package if command not found
-antigen bundle command-not-found
 # Copy current $PWD
 antigen bundle copypath
 # Add keyboard shortcuts for navigating directory history and hierarchy
@@ -199,8 +199,6 @@ antigen bundle akash329d/zsh-alias-finder
 antigen bundle Aloxaf/fzf-tab
 # pacman/aur helper aliases
 antigen bundle Junker/zsh-archlinux@main
-# cd to git root after cloning
-antigen bundle mollifier/cd-gitroot
 # Ctrl+R tab menu history search
 antigen bundle joshskidmore/zsh-fzf-history-search
 antigen apply
@@ -223,3 +221,5 @@ bindkey '^ ' autosuggest-accept
 ## Terminal title
 DISABLE_AUTO_TITLE="true"
 echo -e "\033];[$(hostname)@$(whoami)]:$\007"
+
+eval "$(starship init zsh)"
