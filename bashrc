@@ -9,12 +9,12 @@ echo "Uptime:       $(uptime -p)"
 
 prompt() {
 
-	if [[ $PWD != "/home/wirt" ]] && [[ "$(whoami)" == "wirt" ]] ; then
-		echo "[\[\033[01;32m\]\u\[\e[m\]\[\e[93m\] ~ $PWD\[\e[m\]]:$"
+	if [[ "$(whoami)" == "wirt" ]] ; then
+		echo "\[\033[01;32m\]\u\[\033[00m\] \[\033[01;34m\]\w\[\033[01;34m\]:$\033[00m\]"
 	elif [[ "$(whoami)" == "root" ]]; then
-		echo "[\[\033[01;31m\]\u\[\e[m\]\[\e[93m\] ~ $PWD\[\e[m\]]:#"
+		echo "\[\033[01;31m\]\u\[\033[00m\] \[\033[01;34m\]\w\[\033[01;34m\]:#\033[00m\]"
 	else
-		echo "[\[\033[01;32m\]\u\[\e[m\]\[\e[93m\] \w\[\e[m\]]:$"
+		echo "\u@\h:\w\$"
 	fi
 }
 
