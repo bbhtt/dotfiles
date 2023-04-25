@@ -154,6 +154,7 @@ alias pf="printf '%s\n' *"
 alias rgtagmp3="mp3gain -s i -r -e *.mp3"
 alias cat="bat --style=plain"
 alias rename="rn"
+alias rm="trash-put"
 
 ## Environment variables
 export MICRO_CONFIG_HOME="/home/wirt/.config/micro"
@@ -223,3 +224,4 @@ DISABLE_AUTO_TITLE="true"
 echo -e "\033];[$(hostname)@$(whoami)]:$\007"
 
 eval "$(starship init zsh)"
+

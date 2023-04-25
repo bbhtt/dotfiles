@@ -47,15 +47,11 @@ alias diff="delta"
 alias nano="micro"
 alias shredf="shred -uvz"
 alias top="top -e m -E m -u $(whoami)"
-alias 'cd..'="cd_dir"
 alias pf="printf '%s\n' *"
 alias rgtagmp3="mp3gain -s i -r -e *.mp3"
 alias cat="bat --style=plain"
-
-# superuser rm -rf
-function pkrm() {
-	sudo rm -rf "$@";
-}
+alias rename="rn"
+alias rm="trash-put"
 
 # cd up specifying number
 function cd_dir() {
@@ -83,3 +79,4 @@ export VISUAL="micro"
 export PAGER="less -r"
 export BAT_THEME="Dracula"
 export PATH="$PATH:$HOME/.local/bin"
+
