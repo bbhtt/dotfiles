@@ -32,9 +32,11 @@ touch $XDG_CACHE_HOME/zsh/zshistory
 
 [ ! -f $XDG_BIN_HOME/git-news ] && curl -s -o $XDG_BIN_HOME/git-news \
   https://raw.githubusercontent.com/bbhtt/dotfiles/refs/heads/main/git-news
+  chmod +x $XDG_BIN_HOME/git-news
 
 [ ! -f $XDG_BIN_HOME/git-repauthor ] && curl -s -o $XDG_BIN_HOME/git-repauthor \
   https://raw.githubusercontent.com/bbhtt/dotfiles/refs/heads/main/git-repauthor
+  chmod +x $XDG_BIN_HOME/git-repauthor
 
 [ ! -d $XDG_CONFIG_HOME/zsh/.antidote ] \
   && git clone -q --depth=1 https://github.com/mattmc3/antidote.git $XDG_CONFIG_HOME/zsh/.antidote
