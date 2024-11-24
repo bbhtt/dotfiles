@@ -4,7 +4,7 @@ email = bbhtt.zn0i8@slmail.me
 signingkey = 0C3251A24745E484
 
 [credential]
-helper = /usr/lib/git-core/git-credential-libsecret
+helper = /usr/libexec/git-core/git-credential-libsecret
 
 [interactive]
 diffFilter = delta --color-only --features=interactive
@@ -40,8 +40,7 @@ line-numbers-left-style = blue
 line-numbers-right-style = blue
 
 [merge]
-conflictstyle = diff3
-tool = diffuse
+conflictStyle = zdiff3
 
 [color]
 diff = auto
@@ -84,16 +83,39 @@ colorMoved = default
 [difftool]
 prompt = false
 
+[difftool "diff"]
+cmd = /usr/bin/diff --color=always -Nrui $LOCAL $REMOTE
+
 [receive]
 fsckObjects = true
 
 [help]
 autocorrect = 1
 
-[mergetool]
-prompt = false
 [init]
 defaultBranch = main
 
 [commit]
 gpgsign = true
+verbose = true
+
+[format]
+pretty = fuller
+
+[push]
+autoSetupRemote = true
+default = simple
+
+[rerere]
+enabled = true
+
+[submodule]
+recurse = true
+
+[alias]
+pick = cherry-pick -x
+#mr = !sh -c 'git fetch origin merge-requests/$1/head:mr-$1 && git checkout mr-$1' -
+#pr  = "!f() { git fetch -fu ${2:-$(git remote |grep ^upstream || echo origin)} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+
+[branch]
+autosetupmerge = simple
