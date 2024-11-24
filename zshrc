@@ -10,14 +10,27 @@ export XDG_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
 export XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}
 export XDG_STATE_HOME=${XDG_STATE_HOME:-$HOME/.local/state}
+export XDG_BIN_HOME=$HOME/.local/bin
 
-mkdir -p $XDG_CACHE_HOME/zsh
+mkdir -p $XDG_CACHE_HOME/zsh $XDG_CONFIG_HOME/micro $XDG_CONFIG_HOME/git $XDG_BIN_HOME
 touch $XDG_CACHE_HOME/zsh/zshistory
 
-[ ! -f $XDG_CONFIG_HOME/zsh/zsh_plugins.conf ] && curl -s -o $XDG_CONFIG_HOME/zsh/zsh_plugins.conf \
-  https://raw.githubusercontent.com/bbhtt/dotfiles/refs/heads/main/zsh_plugins.conf
+declare -A files=(
+  ["$XDG_CONFIG_HOME/zsh/zsh_plugins.conf"]="https://raw.githubusercontent.com/bbhtt/dotfiles/refs/heads/main/zsh_plugins.conf"
+  ["$XDG_CONFIG_HOME/starship.toml"]="https://raw.githubusercontent.com/bbhtt/dotfiles/refs/heads/main/config/starship.toml"
+  ["$XDG_CONFIG_HOME/micro/settings.json"]="https://raw.githubusercontent.com/bbhtt/dotfiles/refs/heads/main/config/micro/settings.json"
+  ["$XDG_CONFIG_HOME/micro/bindings.json"]="https://raw.githubusercontent.com/bbhtt/dotfiles/refs/heads/main/config/micro/bindings.json"
+  ["$XDG_CONFIG_HOME/git/config"]="https://raw.githubusercontent.com/bbhtt/dotfiles/refs/heads/main/gitconfig"
+  ["$XDG_BIN_HOME/git-news"]="https://raw.githubusercontent.com/bbhtt/dotfiles/refs/heads/main/git-news"
+  ["$XDG_BIN_HOME/git-repauthor"]="https://raw.githubusercontent.com/bbhtt/dotfiles/refs/heads/main/git-repauthor"
+)
 
-[ ! -d $XDG_CONFIG_HOME/zsh/.antidote ] && git clone -q --depth=1 https://github.com/mattmc3/antidote.git $XDG_CONFIG_HOME/zsh/.antidote
+for file in "${!files[@]}"; do
+  [ ! -f "$file" ] && curl -o "$file" -s "${files[$file]}"
+done
+
+[ ! -d "$XDG_CONFIG_HOME/zsh/.antidote" ] && \
+  git clone -q --depth=1 https://github.com/mattmc3/antidote.git "$XDG_CONFIG_HOME/zsh/.antidote"
 
 [[ -f $XDG_CONFIG_HOME/zsh/zsh_plugins.conf ]] || touch $XDG_CONFIG_HOME/zsh/zsh_plugins.conf
 fpath=($XDG_CONFIG_HOME/zsh/.antidote/functions $fpath)
