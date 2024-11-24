@@ -1,7 +1,7 @@
 {
     "backup": false,
     "colorcolumn": 72,
-    "colorscheme": "catppuccin-mocha",
+    "colorscheme": "dracula-tc",
     "diffgutter": true,
     "hlsearch": true,
     "incsearch": false,
@@ -12,10 +12,10 @@
     "pluginchannels": [
         "https://raw.githubusercontent.com/micro-editor/plugin-channel/master/channel.json"
     ],
-    "pluginrepos": [],
-    "rmtrailingws": true,
+    "pluginrepos": [
+        "https://codeberg.org/micro-plugins/git-status/raw/branch/main/repo.json"
+    ],
     "savecursor": true,
     "scrollbar": true,
-    "softwrap": true,
-    "statusformatr": ""
+    "softwrap": true
 }
