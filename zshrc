@@ -1,8 +1,8 @@
 ### .zshrc
 
-# eval "$(starship init zsh)"
-
 [[ "$(whoami)" == "root" ]] && return
+
+eval "$(starship init zsh)"
 
 ## Initial environment variables
 
@@ -11,12 +11,6 @@ export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
 export XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}
 export XDG_STATE_HOME=${XDG_STATE_HOME:-$HOME/.local/state}
 touch $XDG_CACHE_HOME/zsh/zshistory
-
-export TYPEWRITTEN_PROMPT_LAYOUT="pure"
-export TYPEWRITTEN_RELATIVE_PATH="adaptive"
-export TYPEWRITTEN_CURSOR="block"
-export TYPEWRITTEN_COLOR_MAPPINGS="primary:#ecec74;secondary:#8AFF80;accent:#FFFF80;info_negative:#FF80BF;info_positive:#8AFF80;info_neutral_1:#FF9580;info_neutral_2:#FFFF80;info_special:#80FFEA"
-export TYPEWRITTEN_ARROW_SYMBOL=""
 
 [[ -f $XDG_CONFIG_HOME/zsh/zsh_plugins.conf ]] || touch $XDG_CONFIG_HOME/zsh/zsh_plugins.conf
 fpath=($XDG_CONFIG_HOME/zsh/.antidote/functions $fpath)
@@ -233,7 +227,7 @@ source $XDG_CONFIG_HOME/zsh/zsh_plugins.zsh
 #source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # cursor should be removed - causes it do disappear on pressing back
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern regexp)
-
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=13'
 # zsh-autosuggestions
 #fpath=(/usr/share/zsh/site-functions/ $fpath)
 #source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
