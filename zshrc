@@ -17,6 +17,8 @@ touch $XDG_CACHE_HOME/zsh/zshistory
 [ ! -f $XDG_CONFIG_HOME/zsh/zsh_plugins.conf ] && curl -o $XDG_CONFIG_HOME/zsh/zsh_plugins.conf \
   -s https://raw.githubusercontent.com/bbhtt/dotfiles/refs/heads/main/zsh_plugins.conf
 
+[ ! -d $XDG_CONFIG_HOME/zsh/.antidote ] && git clone --depth=1 https://github.com/mattmc3/antidote.git $XDG_CONFIG_HOME/zsh/.antidote
+
 [[ -f $XDG_CONFIG_HOME/zsh/zsh_plugins.conf ]] || touch $XDG_CONFIG_HOME/zsh/zsh_plugins.conf
 fpath=($XDG_CONFIG_HOME/zsh/.antidote/functions $fpath)
 autoload -Uz antidote
