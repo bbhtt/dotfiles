@@ -14,8 +14,8 @@ export XDG_STATE_HOME=${XDG_STATE_HOME:-$HOME/.local/state}
 mkdir -p $XDG_CACHE_HOME/zsh
 touch $XDG_CACHE_HOME/zsh/zshistory
 
-[ ! -f $XDG_CONFIG_HOME/zsh/zsh_plugins.conf ] && curl -o $XDG_CONFIG_HOME/zsh/zsh_plugins.conf \
-  -s https://raw.githubusercontent.com/bbhtt/dotfiles/refs/heads/main/zsh_plugins.conf
+[ ! -f $XDG_CONFIG_HOME/zsh/zsh_plugins.conf ] && curl -s -o $XDG_CONFIG_HOME/zsh/zsh_plugins.conf \
+  https://raw.githubusercontent.com/bbhtt/dotfiles/refs/heads/main/zsh_plugins.conf
 
 [ ! -d $XDG_CONFIG_HOME/zsh/.antidote ] && git clone -q --depth=1 https://github.com/mattmc3/antidote.git $XDG_CONFIG_HOME/zsh/.antidote
 
