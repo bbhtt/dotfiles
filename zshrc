@@ -15,22 +15,29 @@ export XDG_BIN_HOME=$HOME/.local/bin
 mkdir -p $XDG_CACHE_HOME/zsh $XDG_CONFIG_HOME/micro $XDG_CONFIG_HOME/git $XDG_BIN_HOME
 touch $XDG_CACHE_HOME/zsh/zshistory
 
-declare -A files=(
-  ["$XDG_CONFIG_HOME/zsh/zsh_plugins.conf"]="https://raw.githubusercontent.com/bbhtt/dotfiles/refs/heads/main/zsh_plugins.conf"
-  ["$XDG_CONFIG_HOME/starship.toml"]="https://raw.githubusercontent.com/bbhtt/dotfiles/refs/heads/main/config/starship.toml"
-  ["$XDG_CONFIG_HOME/micro/settings.json"]="https://raw.githubusercontent.com/bbhtt/dotfiles/refs/heads/main/config/micro/settings.json"
-  ["$XDG_CONFIG_HOME/micro/bindings.json"]="https://raw.githubusercontent.com/bbhtt/dotfiles/refs/heads/main/config/micro/bindings.json"
-  ["$XDG_CONFIG_HOME/git/config"]="https://raw.githubusercontent.com/bbhtt/dotfiles/refs/heads/main/gitconfig"
-  ["$XDG_BIN_HOME/git-news"]="https://raw.githubusercontent.com/bbhtt/dotfiles/refs/heads/main/git-news"
-  ["$XDG_BIN_HOME/git-repauthor"]="https://raw.githubusercontent.com/bbhtt/dotfiles/refs/heads/main/git-repauthor"
-)
+[ ! -f $XDG_CONFIG_HOME/zsh/zsh_plugins.conf ] && curl -o $XDG_CONFIG_HOME/zsh/zsh_plugins.conf \
+  -s https://raw.githubusercontent.com/bbhtt/dotfiles/refs/heads/main/zsh_plugins.conf
 
-for file in "${!files[@]}"; do
-  [ ! -f "$file" ] && curl -o "$file" -s "${files[$file]}"
-done
+[ ! -f $XDG_CONFIG_HOME/starship.toml ] && curl -o $XDG_CONFIG_HOME/starship.toml \
+  -s https://raw.githubusercontent.com/bbhtt/dotfiles/refs/heads/main/config/starship.toml
 
-[ ! -d "$XDG_CONFIG_HOME/zsh/.antidote" ] && \
-  git clone -q --depth=1 https://github.com/mattmc3/antidote.git "$XDG_CONFIG_HOME/zsh/.antidote"
+[ ! -f $XDG_CONFIG_HOME/micro/settings.json ] && curl -o $XDG_CONFIG_HOME/micro/settings.json \
+  -s https://raw.githubusercontent.com/bbhtt/dotfiles/refs/heads/main/config/micro/settings.json
+
+[ ! -f $XDG_CONFIG_HOME/micro/bindings.json ] && curl -o $XDG_CONFIG_HOME/micro/bindings.json \
+  -s https://raw.githubusercontent.com/bbhtt/dotfiles/refs/heads/main/config/micro/bindings.json
+
+[ ! -f $XDG_CONFIG_HOME/git/config ] && curl -o $XDG_CONFIG_HOME/git/config \
+  -s https://raw.githubusercontent.com/bbhtt/dotfiles/refs/heads/main/gitconfig
+
+[ ! -f $XDG_BIN_HOME/git-news ] && curl -o $XDG_BIN_HOME/git-news \
+  -s https://raw.githubusercontent.com/bbhtt/dotfiles/refs/heads/main/git-news
+
+[ ! -f $XDG_BIN_HOME/git-repauthor ] && curl -o $XDG_BIN_HOME/git-repauthor \
+  -s https://raw.githubusercontent.com/bbhtt/dotfiles/refs/heads/main/git-repauthor
+
+[ ! -d $XDG_CONFIG_HOME/zsh/.antidote ] \
+  && git clone -q --depth=1 https://github.com/mattmc3/antidote.git $XDG_CONFIG_HOME/zsh/.antidote
 
 [[ -f $XDG_CONFIG_HOME/zsh/zsh_plugins.conf ]] || touch $XDG_CONFIG_HOME/zsh/zsh_plugins.conf
 fpath=($XDG_CONFIG_HOME/zsh/.antidote/functions $fpath)
