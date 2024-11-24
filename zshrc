@@ -205,7 +205,7 @@ alias resolve="dnscrypt-proxy -config /etc/dnscrypt-proxy/dnscrypt-proxy.toml -r
 alias pgit="/bin/git"
 ## Environment variables
 # Needs to be hardcoded to user
-export MICRO_CONFIG_HOME="/home/bbhtt/.config/micro"
+export MICRO_CONFIG_HOME="$HOME/.config/micro"
 alias prm="/bin/rm"
 
 export MICRO_TRUECOLOR="1"
