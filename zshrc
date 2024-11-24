@@ -39,12 +39,12 @@ touch $XDG_CACHE_HOME/zsh/zshistory
 [ ! -d $XDG_CONFIG_HOME/zsh/.antidote ] \
   && git clone -q --depth=1 https://github.com/mattmc3/antidote.git $XDG_CONFIG_HOME/zsh/.antidote
 
-[[ -f $XDG_CONFIG_HOME/zsh/zsh_plugins.conf ]] || touch $XDG_CONFIG_HOME/zsh/zsh_plugins.conf
+[ ! -f $XDG_CONFIG_HOME/zsh/zsh_plugins.conf ] && touch $XDG_CONFIG_HOME/zsh/zsh_plugins.conf
 fpath=($XDG_CONFIG_HOME/zsh/.antidote/functions $fpath)
 autoload -Uz antidote
-if [[ ! $XDG_CONFIG_HOME/zsh/zsh_plugins.zsh -nt $XDG_CONFIG_HOME/zsh/zsh_plugins.conf ]]; then
-  antidote bundle <$XDG_CONFIG_HOME/zsh/zsh_plugins.conf >|$XDG_CONFIG_HOME/zsh/zsh_plugins.zsh
-fi
+[ -f $XDG_CONFIG_HOME/zsh/zsh_plugins.conf ] \
+  && [ ! -f $XDG_CONFIG_HOME/zsh/zsh_plugins.zsh ] \
+  && antidote bundle <$XDG_CONFIG_HOME/zsh/zsh_plugins.conf >|$XDG_CONFIG_HOME/zsh/zsh_plugins.zsh
 
 ## zsh options
 # Turns on spelling correction for commands
