@@ -159,6 +159,7 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
 zstyle ':fzf-tab:complete:ls:*' fzf-preview 'exa -1 --color=always $realpath'
 # switch group using `,` and `.`
 zstyle ':fzf-tab:*' switch-group ',' '.'
+zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
 
 # Don't consider certain characters part of the word
 WORDCHARS=${WORDCHARS//\/[&.;]}
@@ -218,7 +219,7 @@ alias top="top -e m -E m -u $(whoami)"
 alias pf="printf '%s\n' *"
 alias rgtagmp3="mp3gain -s i -r -e *.mp3"
 alias cat="bat --style=plain"
-alias rm="trash-put"
+#alias rm="trash-rm"
 alias yank="yank-cli -- wl-copy"
 alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 alias irssi="irssi --config=$XDG_CONFIG_HOME/irssi/config --home=$XDG_DATA_HOME/irssi"
@@ -246,6 +247,8 @@ export ELINKS_CONFDIR="$XDG_CONFIG_HOME/elinks"
 export MOZBUILD_STATE_PATH="$XDG_STATE_HOME/mozbuild"
 export THELOUNGE_HOME="$XDG_CONFIG_HOME/thelounge"
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/keyring/ssh"
+export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
+export PYTHON_HISTORY=$XDG_DATA_HOME/python_history
 # docker-compose v2 systemctl --user enable --now podman.socket
 #export DOCKER_HOST=unix:///run/user/$UID/podman/podman.sock
 
@@ -269,6 +272,6 @@ ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste)
 DISABLE_AUTO_TITLE="true"
 echo -e "\033];[$(whoami)@$(hostname)]:$\007"|tr -d '\n'
 
-if [ -f "$(which podman 2> /dev/null)" ]; then
-  podman start Archlinux > /dev/null && podman start Fedora > /dev/null
-fi
+#if [ -f "$(which podman 2> /dev/null)" ]; then
+#  podman start Archlinux > /dev/null
+#fi
