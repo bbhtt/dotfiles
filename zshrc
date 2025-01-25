@@ -202,6 +202,18 @@ paste() {
   curl -s -F "content=<-" http://dpaste.com/api/v2/
 }
 
+dockersize() {
+  docker manifest inspect -v "$1" | \
+  jq -c 'if type == "array" then .[] else . end' | \
+  jq -r '[
+    ( .Descriptor.platform | [ .os, .architecture, .variant, ."os.version" ] | del(..|nulls) | join("/") ), 
+    ( [ ( .OCIManifest // .SchemaV2Manifest ).layers[].size ] | add ) 
+  ] | join(" ")' | \
+  numfmt --to iec --format '%.2f' --field 2 | \
+  sort | \
+  column -t
+}
+
 ## Aliases
 #alias ls="lsd -lA"
 alias grep="grep -i --color=auto"
