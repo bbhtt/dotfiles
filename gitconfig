@@ -41,6 +41,7 @@ line-numbers-right-style = blue
 
 [merge]
 conflictStyle = zdiff3
+ff = only
 
 [color]
 diff = auto
@@ -113,9 +114,18 @@ enabled = true
 recurse = true
 
 [alias]
-pick = cherry-pick -x
-#mr = !sh -c 'git fetch origin merge-requests/$1/head:mr-$1 && git checkout mr-$1' -
-#pr  = "!f() { git fetch -fu ${2:-$(git remote |grep ^upstream || echo origin)} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+pickx = cherry-pick -x
+pick = cherry-pick
 
 [branch]
 autosetupmerge = simple
+
+[tag]
+forceSignAnnotated = true
+gpgSign = true
+
+[pull]
+ff = only
+
+[fetch]
+prune = true

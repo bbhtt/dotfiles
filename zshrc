@@ -198,10 +198,6 @@ git() {
   fi
 }
 
-paste() {
-  curl -s -F "content=<-" http://dpaste.com/api/v2/
-}
-
 dockersize() {
   docker manifest inspect -v "$1" | \
   jq -c 'if type == "array" then .[] else . end' | \
@@ -238,11 +234,11 @@ alias irssi="irssi --config=$XDG_CONFIG_HOME/irssi/config --home=$XDG_DATA_HOME/
 alias gpdiff="git difftool --tool=diff"
 alias resolve="dnscrypt-proxy -config /etc/dnscrypt-proxy/dnscrypt-proxy.toml -resolve"
 alias pgit="/bin/git"
+alias prm="/bin/rm"
+
 ## Environment variables
 # Needs to be hardcoded to user
 export MICRO_CONFIG_HOME="$HOME/.config/micro"
-alias prm="/bin/rm"
-
 export MICRO_TRUECOLOR="1"
 export EDITOR="micro"
 export VISUAL="micro"

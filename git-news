@@ -30,7 +30,7 @@ if [ -z "$ref2" ]; then
   fi
 fi
 
-git_log_output=$(git --no-pager log --pretty=format:" * %s" --no-merges --no-decorate "$ref1".."$ref2")
+git_log_output=$(git --no-pager log --pretty=format:"* %s" --no-merges --no-decorate "$ref1".."$ref2")
 
 if [ -n "$git_log_output" ]; then
   echo "$git_log_output"
