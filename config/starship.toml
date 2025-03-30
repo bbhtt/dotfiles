@@ -1,0 +1,262 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+add_newline = false
+command_timeout = 120000
+right_format = """"""
+
+[username]
+format = ""
+#style_user = "green"
+#style_root = "red"
+#show_always = true
+
+[hostname]
+format = ""
+#style = "yellow"
+#trim_at = "-"
+#ssh_only = false
+#disabled = false
+#ssh_symbol = " "
+
+[cmd_duration]
+format = ""
+
+#[line_break]
+#disabled = true
+
+[directory]
+style = "bright-blue"
+read_only = ' 󰌾'
+read_only_style = "bright-purple"
+truncation_length = 0
+
+[character]
+success_symbol = "[→](bold green)"
+error_symbol = "[x](bold red)"
+
+[git_branch]
+style = "yellow"
+format = '[$symbol$branch]($style) '
+symbol = ' '
+truncation_length = 20
+truncation_symbol = '...'
+
+[hg_branch]
+format = '[$symbol$branch]($style)'
+symbol = ' '
+
+[git_commit]
+style = "#00cc00"
+commit_hash_length = 8
+tag_disabled = false
+tag_symbol = '笠'
+
+[git_state]
+disabled = false
+format = '[\($state( $progress_current/$progress_total)\)]($style)'
+rebase = ' '
+merge = ' '
+revert = ' '
+cherry_pick = ' '
+bisect = ' '
+style = "red"
+
+[git_status]
+format = '[$conflicted$deleted$renamed$modified$typechanged$staged$untracked$ahead_behind]($style)'
+conflicted = '[(🗲 ${count})](fg:red) '
+ahead = '[(↑ ${count})](fg:blue) '
+behind = '[(↓ ${count})](fg:yellow) '
+diverged = '[(↕ ↑${ahead_count} ↓${behind_count})](fg:red) '
+up_to_date = '[✓](green)'
+untracked = '[( ${count})](fg:bright-yellow) '
+modified = '[( ${count})](fg:bright-purple) '
+staged = '[+\($count\)](green) '
+renamed = '[( ${count})](fg:bright-cyan) '
+deleted = '[( ${count})](fg:bright-red) '
+
+[custom.toolbox]
+command = "echo $(. /var/run/.containerenv; echo ${name})"
+when = """ [[ -f /run/.containerenv ]] """
+symbol = '⬢'
+style = "bold red dimmed"
+format = "[$symbol \\[$output\\]]($style) "
+disabled = false
+
+[container]
+disabled = true
+
+[aws]
+format = ''
+
+[bun]
+format = ''
+
+[c]
+format = ''
+
+[cmake]
+format = ''
+
+[cobol]
+format = ''
+
+[conda]
+format = ''
+
+[crystal]
+format = ''
+
+[daml]
+format = ''
+
+[dart]
+format = ''
+
+[deno]
+format = ''
+
+[docker_context]
+format = ''
+
+[dotnet]
+format = ''
+
+[elixir]
+format = ''
+
+[elm]
+format = ''
+
+[erlang]
+format = ''
+
+[fennel]
+format = ''
+
+[fossil_branch]
+format = ''
+
+[gcloud]
+format = ''
+
+[golang]
+format = ''
+
+[gradle]
+format = ''
+
+[guix_shell]
+format = ''
+
+[haskell]
+format = ''
+
+[haxe]
+format = ''
+
+[helm]
+format = ''
+
+[java]
+format = ''
+
+[julia]
+format = ''
+
+[kotlin]
+format = ''
+
+[kubernetes]
+format = ''
+
+[lua]
+format = ''
+
+[memory_usage]
+format = ''
+
+[meson]
+format = ''
+
+[nim]
+format = ''
+
+[nix_shell]
+format = ''
+
+[nodejs]
+format = ''
+
+[ocaml]
+format = ''
+
+[opa]
+format = ''
+
+[openstack]
+format = ''
+
+[os]
+format = ''
+
+[package]
+format = ''
+
+[perl]
+format = ''
+
+[php]
+format = ''
+
+[pijul_channel]
+format = ''
+
+[pulumi]
+format = ''
+
+[purescript]
+format = ''
+
+[python]
+format = "[(${virtualenv})]($style) "
+
+[raku]
+format = ''
+
+[red]
+format = ''
+
+[ruby]
+format = ''
+
+[rust]
+format = ''
+
+[scala]
+format = ''
+
+[spack]
+format = ''
+
+[sudo]
+format = ''
+
+[swift]
+format = ''
+
+[terraform]
+format = ''
+
+[time]
+format = '[$time]($style)'
+
+[vagrant]
+format = ''
+
+[vlang]
+format = ''
+
+[zig]
+format = ''
+
+[solidity]
+format = ''

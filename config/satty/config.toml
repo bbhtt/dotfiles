@@ -1,0 +1,6 @@
+[general]
+early-exit = true
+copy-command = "wl-copy"
+output-filename = "/home/bbhtt/Pictures/Screenshots/satty-%Y-%m-%d_%H:%M:%S.png"
+save-after-copy = true
+disable-notifications = true

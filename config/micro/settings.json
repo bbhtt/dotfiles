@@ -1,0 +1,21 @@
+{
+    "backup": false,
+    "colorcolumn": 72,
+    "colorscheme": "dracula-tc",
+    "diffgutter": true,
+    "hlsearch": true,
+    "incsearch": false,
+    "indentchar": "|",
+    "infobar": false,
+    "initlua": true,
+    "mkparents": true,
+    "pluginchannels": [
+        "https://raw.githubusercontent.com/micro-editor/plugin-channel/master/channel.json"
+    ],
+    "pluginrepos": [
+        "https://codeberg.org/micro-plugins/git-status/raw/branch/main/repo.json"
+    ],
+    "savecursor": true,
+    "scrollbar": true,
+    "softwrap": true
+}
