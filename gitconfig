@@ -112,9 +112,12 @@ enabled = true
 recurse = true
 
 [alias]
-pickx = cherry-pick -x
 pick = cherry-pick
 pdiff = difftool --tool=diff
+pr  = "!f() { git fetch -fu ${2:-$(git remote |grep ^upstream || echo origin)} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+mr = "!f() { remote=${2:-$(git remote | grep ^upstream || echo origin)}; git fetch -fu \"$remote\" \"merge-requests/$1/head:mr/$1\" && git checkout \"mr/$1\"; }; f"
+treehash = "!f() { git rev-parse \"${1:-HEAD}^{tree}\"; }; f"
+news = "!f() { git --no-pager log --format=\"* %s\" --no-merges --no-decorate \"$1..$2\" 2>/dev/null; }; f \"$@\""
 
 [branch]
 autosetupmerge = simple
